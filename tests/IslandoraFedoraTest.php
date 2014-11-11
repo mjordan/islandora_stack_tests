@@ -11,14 +11,14 @@ class IslandoraFedora extends PHPUnit_Framework_TestCase
         $this->ini = parse_ini_file('tests.ini', TRUE);
     }
 
-    public function testSolrIsReady()
+    public function testFedoraIsReady()
     {
         $client = new Client();
         $response = $client->get($this->ini['Fedora']['url']);
         $this->assertEquals(200, $response->getStatusCode());
     }
 
-    public function testForSolrResponse()
+    public function testForFedoraResponse()
     {
         $client = new Client();
         $response = $client->get($this->ini['Fedora']['url']);

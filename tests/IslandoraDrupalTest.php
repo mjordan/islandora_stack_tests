@@ -18,7 +18,7 @@ class IslandoraDrupal extends PHPUnit_Framework_TestCase
         $this->assertEquals(200, $response->getStatusCode());
     }
 
-    public function testForStringInFrontPage()
+    public function testForDrupalResponse()
     {
         $client = new Client();
         $response = $client->get($this->ini['Drupal']['host']);
