@@ -36,5 +36,37 @@ ok 5 - IslandoraSolr::testSolrIsReady
 ok 6 - IslandoraSolr::testForSolrResponse
 1..6
 ```
+If any of your tests fail, you will see errors while running the tests, and your results file will document the failure. In this example, the Fedora server is not responding:
+
+```
+TAP version 13
+ok 1 - IslandoraDrupal::testDrupalIsReady
+ok 2 - IslandoraDrupal::testForDrupalResponse
+not ok 3 - Error: IslandoraFedora::testFedoraIsReady
+not ok 4 - Error: IslandoraFedora::testForFedoraResponse
+ok 5 - IslandoraSolr::testSolrIsReady
+ok 6 - IslandoraSolr::testForSolrResponse
+1..6
+```
 
 If you want to use another log output format, consult the PHPUnit [command-line options' documentation](https://phpunit.de/manual/current/en/textui.html#textui.clioptions).
+
+## Adding new tests
+
+The easiest way to add new tests is to copy one of the files that exist in the /tests directory, change its name (which must follow the pattern the pattern "xxxTest.php"), and change the specifics inside the class definition. In particular, you will _need_ to change the class name, and you _should_ change the function names since they they appear in the logged output. 
+
+Every test class should declare the ```protected $ini``` property and the ```public function setUp()``, since that is where the class reads the values from the tests.ini configuration file:
+
+```php
+<?php
+
+    protected $ini;
+
+    public function setUp()
+    {
+        $this->ini = parse_ini_file('tests.ini', TRUE);
+    }
+?>
+```
+
+If your new tests use configuration values, you can add the values to tests.ini or create your own .ini file and refer to it in the ```parse_ini_file()``` function.
