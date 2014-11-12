@@ -18,6 +18,15 @@ class IslandoraFedora extends PHPUnit_Framework_TestCase
         $this->assertEquals(200, $response->getStatusCode());
     }
 
+    public function testForFedoraRindexResponse()
+    {
+        $client = new Client();
+        $response = $client->get($this->ini['Fedora']['rindex_url']);
+        $this->assertEquals(200, $response->getStatusCode());
+        // Returned content must contain the string 'islandora'.
+        $this->assertRegExp('/islandora/', (string) $response->getBody());
+    }
+
     public function testForFedoraResponse()
     {
         $client = new Client();
