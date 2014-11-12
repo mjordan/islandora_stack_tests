@@ -55,12 +55,15 @@ If you want to use another log output format, consult the PHPUnit [command-line 
 
 ## Adding new tests
 
-The easiest way to add new tests is to copy one of the files that exist in the /tests directory, change its name (which must follow the pattern the pattern "xxxTest.php"), and change the specifics inside the class definition. In particular, you will _need_ to change the class name (or PHP will throw a fatal error), and you _should_ change the function names since they they appear in the logged output. As long as your test files are in the /tests directory and follow that naming convention, PHPUnit will detect and run them automatically. You do nt have to do anything else to get your tests to run.
+The easiest way to add new tests is to copy one of the files that exist in the /tests directory, change its name (which must follow the pattern the pattern "xxxTest.php"), and change the specifics inside the class definition. In particular, you will _need_ to change the class name (or PHP will throw a fatal error), and you _should_ change the function names since they they appear in the logged output. As long as your test files are in the /tests directory and follow that naming convention, PHPUnit will detect and run them automatically. You do not have to do anything else to get your tests to run.
 
-Every test class should declare the ```protected $ini``` property and the ```public function setUp()``` method, since that is where the class reads the values from the tests.ini configuration file:
+Every test class should declare the ```protected $ini``` property and the ```public function setUp()``` method, since that is where the class reads the values from the tests.ini configuration file. The class file should also contain the 'require' and 'use' directives as illustrated below, if your tests employ the Guzzle HTTP client (and most tests will):
 
 ```php
 <?php
+require 'vendor/autoload.php';
+use GuzzleHttp\Client;
+
 class IslandoraFoo extends PHPUnit_Framework_TestCase
 {
     protected $ini;
