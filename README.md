@@ -7,12 +7,14 @@ Still just a proof of concept. More tests, and feedback, are welcome. Please ope
 
 ## Overview
 
-This is a simple test suite to determine whether the main components of an Islandora stack (Drupal, Solr, and Fedora Commons) have become broken after an upgrade or major change in the configuration of any of the components. It is not intended as a replacement for functional or unit tests included with Drupal or Islandora modules. Its design goals are simplicity, ease of use, modularity, portability (it should run on any platform running PHP 5.4.0 or higher (the minimum required version for the Guzzle HTTP client) and use of standard tools.
+This is a simple test suite to determine whether the main components of an Islandora stack (Drupal, Solr, and Fedora Commons) have become broken after an upgrade or major change in the configuration of any of the components. It is not intended as a replacement for functional or unit tests included with Drupal or Islandora modules. Its design goals are simplicity, ease of use, modularity, portability, and use of standard tools.
+
+The only prerequisite is a minimum PHP version of 5.4.0, the minimum required version for the Guzzle HTTP client.
 
 ## Installation
 
 1. Clone this git repo.
-2. Change into the resulting directory and install composer by issuing the following command: ```curl -sS https://getcomposer.org/installer | php```
+2. Change into the resulting directory and install Composer by issuing the following command: ```curl -sS https://getcomposer.org/installer | php```
 
 3. Use composer to install [PHPUnit](https://phpunit.de/) and [Guzzle](http://guzzle3.readthedocs.org/) by issuing the following command: ```php composer.phar install```
 
