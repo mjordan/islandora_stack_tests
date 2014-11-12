@@ -3,11 +3,11 @@ Islandora Stack Test Suite
 
 Test suite for testing an Islandora stack after upgrades, configuration changes, etc.
 
-Still just a proof of concept.
+Still just a proof of concept. More tests, and feedback, are welcome. Please open an issue if you have either.
 
 ## Overview
 
-This is a test suite to determine whether the main components of an Islandora stack (Drupal, Solr, and Fedora Commons) have become broken after an upgrade or major change in the configuration of any of the components. It is not intended as a replacement for functional or unit tests included with Drupal or Islandora modules.
+This is a simple test suite to determine whether the main components of an Islandora stack (Drupal, Solr, and Fedora Commons) have become broken after an upgrade or major change in the configuration of any of the components. It is not intended as a replacement for functional or unit tests included with Drupal or Islandora modules. Its design goals are simplicity, modularity, and portability (it should run on any platform running PHP 5.4.0 (the minimum required version for the Guzzle HTTP client) and use of standard tools.
 
 ## Installation
 
@@ -18,7 +18,7 @@ This is a test suite to determine whether the main components of an Islandora st
 
 ## Usage
 
-Change the settings in tests.ini to reflect your hostnames, etc. and run the test suite like this:
+These tests can be run from any machine that meets the minimum PHP requirements, but it's probably a good idea to run them from somewhere other than your Drupal server (to avoid any false positives caused by running from 'localhost'). Change the settings in tests.ini to reflect your server's hostnames, etc. and run the test suite like this:
 
 ```
 phpunit --log-tap=results.tap tests
@@ -53,7 +53,7 @@ If you want to use another log output format, consult the PHPUnit [command-line 
 
 ## Adding new tests
 
-The easiest way to add new tests is to copy one of the files that exist in the /tests directory, change its name (which must follow the pattern the pattern "xxxTest.php"), and change the specifics inside the class definition. In particular, you will _need_ to change the class name, and you _should_ change the function names since they they appear in the logged output. As long as your test files are in the /tests directory and follow that naming convention, PHPUnit will detect and run them automatically.
+The easiest way to add new tests is to copy one of the files that exist in the /tests directory, change its name (which must follow the pattern the pattern "xxxTest.php"), and change the specifics inside the class definition. In particular, you will _need_ to change the class name (or PHP will throw a fatal error), and you _should_ change the function names since they they appear in the logged output. As long as your test files are in the /tests directory and follow that naming convention, PHPUnit will detect and run them automatically. You do nt have to do anything else to get your tests to run.
 
 Every test class should declare the ```protected $ini``` property and the ```public function setUp()``` method, since that is where the class reads the values from the tests.ini configuration file:
 
