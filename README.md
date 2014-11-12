@@ -16,6 +16,8 @@ This is a simple test suite to determine whether the main components of an Islan
 
 3. Use composer to install [PHPUnit](https://phpunit.de/) and [Guzzle](http://guzzle3.readthedocs.org/) by issuing the following command: ```php composer.phar install```
 
+If you want to run your tests from a Windows machine, you should follow the [these instructions](https://getcomposer.org/doc/00-intro.md#installation-windows) to install Composer. Everything else should work as documented above.
+
 ## Usage
 
 These tests can be run from any machine that meets the minimum PHP requirements, but it's probably a good idea to run them from somewhere other than your Drupal server (to avoid any false positives caused by running from 'localhost'). Change the settings in tests.ini to reflect your server's hostnames, etc. and run the test suite like this:
