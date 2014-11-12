@@ -53,13 +53,14 @@ If you want to use another log output format, consult the PHPUnit [command-line 
 
 ## Adding new tests
 
-The easiest way to add new tests is to copy one of the files that exist in the /tests directory, change its name (which must follow the pattern the pattern "xxxTest.php"), and change the specifics inside the class definition. In particular, you will _need_ to change the class name, and you _should_ change the function names since they they appear in the logged output. 
+The easiest way to add new tests is to copy one of the files that exist in the /tests directory, change its name (which must follow the pattern the pattern "xxxTest.php"), and change the specifics inside the class definition. In particular, you will _need_ to change the class name, and you _should_ change the function names since they they appear in the logged output. As long as your test files are in the /tests directory and follow that naming convention, PHPUnit will detect and run them automatically.
 
-Every test class should declare the ```protected $ini``` property and the ```public function setUp()``, since that is where the class reads the values from the tests.ini configuration file:
+Every test class should declare the ```protected $ini``` property and the ```public function setUp()``` method, since that is where the class reads the values from the tests.ini configuration file:
 
 ```php
 <?php
-
+class IslandoraFoo extends PHPUnit_Framework_TestCase
+{
     protected $ini;
 
     public function setUp()
@@ -70,3 +71,5 @@ Every test class should declare the ```protected $ini``` property and the ```pub
 ```
 
 If your new tests use configuration values, you can add the values to tests.ini or create your own .ini file and refer to it in the ```parse_ini_file()``` function.
+
+When writing your own tests, you will find the documentation on PHPUnit's [assertions](https://phpunit.de/manual/current/en/appendixes.assertions.html) and Guzzle's [Response objects](http://guzzle3.readthedocs.org/http-client/response.html) particularly useful. But, these tests are ordinary PHPUnit tests that use a Guzzle HTTP client to interact with various parts of the Islandora stack, so you can use any part of either framework that you need.
