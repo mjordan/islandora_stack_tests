@@ -9,7 +9,7 @@ Still just a proof of concept. Feedback, and more tests, are welcome. Please ope
 
 This is a simple test suite to determine whether the main components of an Islandora stack (Drupal, Solr, and Fedora Commons) have become broken after an upgrade or major change in the configuration of any of the components. It is not intended as a replacement for functional or unit tests included with Drupal or Islandora modules. Its design goals are simplicity, ease of use, modularity, portability, and use of standard tools.
 
-This test suite contains four tests, one for each of Drupal, Fedora Commons, Solr, and a general speed test. However, these are intended more to be examples than definitive tests. You will likely want to add your own tests.
+The suite contains four tests, one for each of Drupal, Fedora Commons, Solr, and a general speed test. However, these are intended more to be examples than definitive tests. You will likely want to add your own tests.
 
 ## Installation
 
@@ -41,7 +41,8 @@ ok 4 - IslandoraFedora::testForFedoraRindexResponse
 ok 5 - IslandoraFedora::testForFedoraResponse
 ok 6 - IslandoraSolr::testSolrIsReady
 ok 7 - IslandoraSolr::testForSolrResponse
-1..7
+ok 8 - IslandoraSpeed::testTimeToDownloadCollectionPages
+1..8
 ```
 
 If any of your tests fail, you will see errors while running the tests, and your results file will document the failure. In this example, the Fedora server is not responding:
@@ -55,7 +56,8 @@ not ok 4 - Error: IslandoraFedora::testForFedoraRindexResponse
 not ok 5 - Error: IslandoraFedora::testForFedoraResponse
 ok 6 - IslandoraSolr::testSolrIsReady
 ok 7 - IslandoraSolr::testForSolrResponse
-1..7
+not ok 8 - Error: IslandoraSpeed::testTimeToDownloadCollectionPages
+1..8
 ```
 
 If you want to use another log output format like JUnit XML or JSON, consult the PHPUnit [command-line options documentation](https://phpunit.de/manual/current/en/textui.html#textui.clioptions).
